@@ -1,0 +1,6 @@
+# IntelliJ project files
+.gitignore
+.idea/
+node_modules/
+package.json
+dist/
