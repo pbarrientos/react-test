@@ -4,8 +4,8 @@
   "description": "Trying ReactJS",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build",
-    "build": "webpack -d && cp /Users/patricio/dev/react-test/src/index.html /Users/patricio/dev/react-test/dist/index.html && webpack-dev-server --content-base /Users/patricio/dev/react-test/src/ --inline --hot --port 9420",
+    "start": "yarn run build",
+    "build": "webpack -d && cp /Users/patricio/dev/repos/react-test/src/index.html /Users/patricio/dev/repos/react-test/dist/index.html && webpack-dev-server --content-base /Users/patricio/dev/repos/react-test/src/ --inline --hot --port 9420",
     "build:prod": "webpack -d && cp src/index.html dist/index.html "
   },
   "author": "Patricio Rossi",
