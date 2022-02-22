@@ -1,24 +1,39 @@
-var webpack = require("webpack");
-var path = require("path");
+const path = require("path");
 
-var DIST_DIR = path.resolve(__dirname, "dist");
-var SRC_DIR = path.resolve(__dirname, "src");
+const DIST_DIR = path.resolve(__dirname, "dist");
+const SRC_DIR = path.resolve(__dirname, "src");
 
-var config = {
+const config = {
     entry: SRC_DIR + "/app/index.js",
     output: {
         path: DIST_DIR + "/app",
         filename: "bundle.js",
         publicPath: "/app/"
     },
+    devtool: 'source-map',
+    mode: 'development',
+    devServer: {
+        contentBase: DIST_DIR,
+        open: true,
+        clientLogLevel: 'silent',
+        port: 9000
+    },
     module: {
         rules: [{
-            test: /\.js?/,
+            test: /\.(jsx|js)$/,
             include: SRC_DIR,
-            loader: "babel-loader",
-            query: {
-                presets: ["react", "es2015", "stage-2"]
-            }
+            exclude: /node_modules/,
+            use: [{
+                loader: "babel-loader",
+                options: {
+                    presets: [
+                        ['@babel/preset-env', {
+                            "targets": "defaults"
+                        }],
+                        '@babel/preset-react'
+                    ]
+                }
+            }]
         }]
     }
 }
